@@ -4,15 +4,16 @@ Graph implementation
 import numpy as np
 
 class Graph:
-
-    # points is a list of letters representing graph points
-    # edge_list contains tupes with connected points
-    # n_ants is the number of ants participating
+    
+    """
+    · points is a list of letters representing graph points
+    · edge_list contains tupes with connected points
+    · n_ants is the number of ants participating
+    """
     def __init__(self, points, edge_list, n_ants):
         self.point_set = set(points)
         self.edge_list = edge_list
         self.total_ants = n_ants
-        self.time = 0
         self.n_points = len(self.point_set)
         self.template_matrix = np.zeros((self.n_points, self.n_points), dtype=int)
         self.points_dict = {} 
