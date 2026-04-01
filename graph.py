@@ -15,7 +15,7 @@ class Graph:
         self.time = 0
         self.n_points = len(self.point_set)
         self.template_matrix = np.zeros((self.n_points, self.n_points), dtype=int)
-        self.points_dict = {}
+        self.points_dict = {} 
         
         value = 0
         for i in self.point_set:
@@ -25,7 +25,7 @@ class Graph:
         self.a_matrix = np.copy(self.template_matrix)
         self.n_ants_matrix = np.copy(self.template_matrix)
         self.dist_matrix = np.copy(self.template_matrix)
-        self.trail_matrix = np.copy(self.template_matrix)
+        self.t_matrix = np.copy(self.template_matrix)
 
     # adj_matrix creates the adjacency matrix of the graph
     def adj_matrix(self):
@@ -43,13 +43,3 @@ class Graph:
     
 
     
-
-
-
-    
-
-
-
-
-
-
