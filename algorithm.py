@@ -48,6 +48,8 @@ graph.initialize_dist(dist_list)
 
 # number of cycles
 max_cycles = 50
+
+# store results
 best_distance = float("inf")
 best_tour = None
 
