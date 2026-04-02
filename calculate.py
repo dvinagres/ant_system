@@ -4,7 +4,7 @@ AS implementation
 
 import numpy as np
 
-class Algorithm:
+class Calculate:
 
     def __init__(self, graph, ants):
         self.graph = graph
