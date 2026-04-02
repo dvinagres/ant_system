@@ -41,15 +41,45 @@ class Algorithm:
 
     """
     "if on edge (i, j) there has been a lot of traffic the it is highly desirable"
-    transition_probability calculates probs from point i to point j
+    · transition_probability calculates probs from point i to point j
+    · this method also appends next point to each tour
     """
    # transition_probability from point i to j 
     def transition_probability(self):
         points_list = self.graph.point_set
         
         for ant in self.ants:
-            allowed = points_list - ant.visited_points
+            allowed = list(points_list - ant.visited_points)
             allowed_sum = 0
+
+            if len(ant.tour) == 0:
+                current_point = ant.starting_point
+            else:
+                # if is not starting_point, current point is the second element of the last tuple in tour
+                current_point = ant.tour[-1][1]
+
+            p1 = self.graph.points_dict[current_point]
+
+            probs = []
+            values = []
+
+            for point in allowed:
+                p2 = self.graph.points_dict[point]
+                visibility = 1/self.graph.dist_matrix[p1, p2]
+                value = pow(self.graph.trail_matrix[p1, p2], self.alpha) * pow(visibility, self.beta)
+                values.append(value)
+
+            allowed_sum = sum(values)
+
+            for value in values:
+                prob = value / allowed_sum
+                probs.append(prob)
+ 
+            next_point = np.random.choice(allowed, p=probs)
+
+            # adding next point to ant tour and and visited points
+            ant.tour.append((current_point, next_point))
+            ant.visited_points.add(next_point)
 
 
 
