@@ -10,7 +10,7 @@ class Ant:
         self.id = id
         self.graph = graph
         self.visited_points = set()
-        self.starting_point = self.graph.points_dict[0] # Default start
+        self.starting_point = None 
         self.tour = []  # list of tuples
 
     """
