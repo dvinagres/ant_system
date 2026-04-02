@@ -11,8 +11,8 @@ class Calculate:
         self.ants = ants
         self.rho = 0.5  # < 1 to avoid unlimited accumulation of trail
         self.q = 0.3
-        self.alpha = 0.02
-        self.beta = 0.02
+        self.alpha = 1
+        self.beta = 5
 
     """
     · if every ant has completed a tour, update_intensity on edge (i, j)
@@ -41,10 +41,9 @@ class Calculate:
     """
    # transition_probability from point i to j 
     def transition_probability(self):
-        points_list = self.graph.point_set
-        
+
         for ant in self.ants:
-            allowed = list(points_list - ant.visited_points)
+            allowed = set(self.graph.points) - ant.visited_points
             allowed_sum = 0
 
             if len(ant.tour) == 0:
@@ -70,7 +69,7 @@ class Calculate:
                 prob = value / allowed_sum
                 probs.append(prob)
  
-            next_point = np.random.choice(allowed, p=probs)
+            next_point = np.random.choice(list(allowed), p=probs)
 
             # adding next point to ant tour and and visited points
             ant.tour.append((current_point, next_point))

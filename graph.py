@@ -28,8 +28,8 @@ class Graph:
 
         self.n_ants_matrix = np.copy(self.template_matrix)
         self.dist_matrix = np.copy(self.template_matrix)
-        self.trail_matrix = np.copy(self.template_matrix)
-        self.delta_matrix = np.copy(self.template_matrix)
+        self.trail_matrix = np.zeros((self.n_points, self.n_points), dtype=float)
+        self.delta_matrix = np.zeros((self.n_points, self.n_points), dtype=float)
     
     # ants in different points at t = 0
     def initialize_ants(self):
@@ -49,7 +49,19 @@ class Graph:
             p2 = self.points_dict[edge[1]]
 
             self.trail_matrix[p1, p2] = c
+            self.trail_matrix[p2, p1] = c
 
+    # initialize distances. dist_list contains points distances
+    def initialize_dist(self, dist_list):
+        i = 0
+        for edge in self.edge_list:
+            p1 = self.points_dict[edge[0]]
+            p2 = self.points_dict[edge[1]]
+
+            self.dist_matrix[p1, p2] = dist_list[i]
+            self.dist_matrix[p2, p1] = dist_list[i]
+            i += 1
+            
     # n_ants_point gives the number of ants on a given point
     def n_ants_point(self, point):
         coord = self.points_dict[point]
