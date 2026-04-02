@@ -28,7 +28,6 @@ class Graph:
         self.dist_matrix = np.copy(self.template_matrix)
         self.trail_matrix = np.copy(self.template_matrix)
         self.delta_matrix = np.copy(self.template_matrix)
-        self.prob_matrix = np.copy(self.template_matrix)
 
     # adj_matrix creates the adjacency matrix of the graph
     def adj_matrix(self):
