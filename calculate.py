@@ -10,7 +10,7 @@ class Calculate:
         self.graph = graph
         self.ants = ants
         self.rho = 0.5  # < 1 to avoid unlimited accumulation of trail
-        self.q = 0.3
+        self.q = 1
         self.alpha = 1
         self.beta = 5
 
