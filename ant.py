@@ -6,18 +6,12 @@ import numpy as np
 
 class Ant:
 
-    def __init__(self, id):
+    def __init__(self, id, graph):
         self.id = id
-        self.time = 0
+        self.graph = graph
         self.visited_points = set()
-        self.graph = Graph(0, [], 0)
         self.starting_point = self.graph.points_dict[0] # Default start
-        self.tour = []
-        self.trail_intensity = 0.03 # trail intensity at time 0 
-        self.cycle = 1
-        self.iteration = 1
-        self.rho = 0.5  # < 1 to avoid unlimited accumulation of trail
-        self.q = 0.3
+        self.tour = []  # list of tuples
 
     """
     update_time
@@ -34,23 +28,14 @@ class Ant:
         if len(self.visited_points) == self.graph.n_points and next_point == self.starting_point:
             completed = True
         return completed
-    
-    """
-    · if tour completed, update_intensity on edge (i, j)
-    · if it's completed, delta_quantity of the kth ant = q -constant- / L -tour length of the kth ant-
-    """
-    def update_intensity(self, tour):
-        tour_length = len(tour)
-        delta_quantity = self.q / tour_length
-        delta_sum = 0
 
-        for i in range(1, self.iteration):
-            delta_sum += delta_quantity
+            
 
-        # New intensity for t + n
-        self.trail_intensity = self.rho * self.trail_intensity + delta_sum
 
-    
+
+
+
+
 
         
         
