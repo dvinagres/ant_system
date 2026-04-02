@@ -23,20 +23,10 @@ class Graph:
             self.points_dict[i] = value
             value += 1
 
-        self.a_matrix = np.copy(self.template_matrix)
         self.n_ants_matrix = np.copy(self.template_matrix)
         self.dist_matrix = np.copy(self.template_matrix)
         self.trail_matrix = np.copy(self.template_matrix)
         self.delta_matrix = np.copy(self.template_matrix)
-
-    # adj_matrix creates the adjacency matrix of the graph
-    def adj_matrix(self):
-        for connection in self.edge_list:
-            p1 = self.points_dict[connection[0]]
-            p2 = self.points_dict[connection[1]]
-            self.a_matrix[p1, p2] = 1
-        
-        return self.a_matrix
     
     # n_ants_point gives the number of ants on a given point
     def n_ants_point(self, point):
