@@ -18,8 +18,6 @@ class Graph:
         self.n_points = len(self.points)
         self.template_matrix = np.zeros((self.n_points, self.n_points), dtype=int)
         self.points_dict = {} 
-        self.time = 0
-        self.cycle = 0
         
         value = 0
         for i in self.points:
