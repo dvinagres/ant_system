@@ -9,11 +9,6 @@ class Calculate:
     def __init__(self, graph, ants):
         self.graph = graph
         self.ants = ants
-        self.time = 0
-        self.cycle = 1
-        self.iteration = 1
-        self.cycle = 1
-        self.iteration = 1
         self.rho = 0.5  # < 1 to avoid unlimited accumulation of trail
         self.q = 0.3
         self.alpha = 0.02
